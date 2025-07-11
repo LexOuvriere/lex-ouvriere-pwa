@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // 📦 Enregistrement du numéro dans le navigateur (localStorage)
     localStorage.setItem('whatsapp-numero', numero);
 
-    // 🔗 Génération du lien personnel vers app.html
-    const refParam = numero.replace('+', ''); // Supprime le "+" pour éviter les erreurs dans l'URL
+    // 🔗 Génération du lien personnel vers app.html sans le "+"
+    const refParam = numero.replace('+', '');
     const lienApp = `https://lexouvriere.github.io/app.html?ref=${refParam}`;
 
     // 💬 Message WhatsApp contenant le lien personnel
@@ -33,7 +33,7 @@ Voici votre lien personnel d’accès sécurisé :
 Ce lien est privé et ne doit pas être partagé.
 `);
 
-    // 🚀 Redirection vers le WhatsApp du visiteur avec message prérempli
+    // 🚀 Redirection vers WhatsApp avec message prérempli
     const lienWhatsApp = `https://wa.me/${refParam}?text=${message}`;
     window.open(lienWhatsApp, '_blank');
 
