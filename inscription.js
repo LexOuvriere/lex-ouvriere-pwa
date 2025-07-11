@@ -1,4 +1,4 @@
-// --- Lex Ouvrière : inscription WhatsApp ---
+// --- Lex Ouvrière : message privé avec accès personnalisé ---
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('whatsapp-form');
 
@@ -6,23 +6,32 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
 
     const numero = document.getElementById('numero').value.trim();
-
-    // Validation simple du numéro (commence par +, puis chiffres)
     const regex = /^\+\d{7,15}$/;
+
     if (!regex.test(numero)) {
-      alert("Entre un numéro WhatsApp valide, par exemple +22890123456.");
+      alert("Entre un numéro WhatsApp valide, ex : +22890123456");
       return;
     }
 
-    // Message à envoyer
-    const message = encodeURIComponent("Bienvenue sur Lex Ouvrière 👷‍♂️\nInstalle notre app ici 👉 https://lexouvriere.github.io/lex-ouvriere-pwa");
+    // 📦 Enregistrement du numéro dans le navigateur (localStorage)
+    localStorage.setItem('whatsapp-numero', numero);
 
-    // Redirection vers WhatsApp
-    const lien = `https://wa.me/${numero.replace('+', '')}?text=${message}`;
-    window.open(lien, '_blank');
+    // 💬 Message WhatsApp contenant le lien d'accès personnel
+    const lienApp = `https://lexouvriere.github.io/app.html?ref=${numero}`;
+    const message = encodeURIComponent(`
+Bienvenue sur Lex Ouvrière 👷‍♂️
 
-    // Optionnel : afficher confirmation
-    alert("Lien WhatsApp ouvert. Vérifie ton téléphone !");
+Voici ton lien personnel d’accès sécurisé :
+🔐 ${lienApp}
+
+Ce lien est réservé à ton numéro et ne doit pas être partagé.
+`);
+
+    // 🚀 Redirection vers le propre WhatsApp du visiteur
+    const lienWhatsApp = `https://wa.me/${numero.replace('+', '')}?text=${message}`;
+    window.open(lienWhatsApp, '_blank');
+
+    alert("Ton message WhatsApp est prêt. Vérifie ton téléphone 📱 !");
   });
 });
 
