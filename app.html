@@ -12,9 +12,7 @@
 
   <script>
     const ref = new URLSearchParams(window.location.search).get('ref');
-    const autorisé = localStorage.getItem('whatsapp-numero');
-    
-
+    const autorisé = localStorage.getItem('whatsapp-numero')?.replace('+', '');
     const contenu = document.getElementById('contenu-securisé');
 
     if (ref && autorisé && ref === autorisé) {
