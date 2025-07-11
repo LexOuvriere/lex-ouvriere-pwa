@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const regex = /^\+\d{7,15}$/;
 
     if (!regex.test(numero)) {
-      alert("Entre un numéro WhatsApp valide, ex : +22890123456");
+      alert("Entre un numéro WhatsApp valide, ex : +22890....56");
       return;
     }
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const message = encodeURIComponent(`
 Bienvenue sur Lex Ouvrière 👷‍♂️
 
-Voici ton lien personnel d’accès sécurisé :
+Voici votre lien personnel d’accès sécurisé :
 🔐 ${lienApp}
 
 Ce lien est réservé à ton numéro et ne doit pas être partagé.
@@ -31,7 +31,7 @@ Ce lien est réservé à ton numéro et ne doit pas être partagé.
     const lienWhatsApp = `https://wa.me/${numero.replace('+', '')}?text=${message}`;
     window.open(lienWhatsApp, '_blank');
 
-    alert("Ton message WhatsApp est prêt. Vérifie ton téléphone 📱 !");
+    alert("Vérifier votre whatsApp pour la suite 📱 !");
   });
 });
 
