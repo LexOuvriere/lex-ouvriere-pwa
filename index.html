@@ -19,6 +19,15 @@
       <button type="submit">Recevoir le lien d’installation</button>
     </form>
   </main>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('SW enregistré ✅'))
+        .catch(err => console.log('SW erreur ❌', err));
+    });
+  }
+</script>
 </body>
 </html>
 
