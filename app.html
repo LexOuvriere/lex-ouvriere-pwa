@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Lex Ouvrière – Accès sécurisé</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="contenu-securisé">
+    <h2>Chargement...</h2>
+  </main>
+
+  <script>
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    const autorisé = localStorage.getItem('whatsapp-numero');
+
+    const contenu = document.getElementById('contenu-securisé');
+
+    if (ref && autorisé && ref === autorisé) {
+      contenu.innerHTML = `
+        <h2>👷 Bienvenue dans l’espace ouvrier privé</h2>
+        <p>Tu as accès à l’application installable et aux ressources dédiées.</p>
+        <ul>
+          <li><a href="https://lexouvriere.github.io/lex-ouvriere-pwa?install=true">📲 Installer l’app</a></li>
+          <li><a href="https://lexouvriere.github.io/lex-ouvriere-pwa?web=true">🌐 Accès Web sans installation</a></li>
+        </ul>
+      `;
+    } else {
+      contenu.innerHTML = `
+        <h2>🔒 Accès refusé</h2>
+        <p>Ce lien est personnel et ne correspond pas à ton session actuelle.</p>
+        <p>Retourne sur la page d’accueil pour générer ton propre accès.</p>
+        <a href="index.html">⬅️ Retour à l’accueil</a>
+      `;
+    }
+  </script>
+</body>
+</html>
+
