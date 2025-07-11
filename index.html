@@ -14,20 +14,21 @@
   </header>
   <main>
     <form id="whatsapp-form">
-      <label for="numero"> Veuillez vous inscrire avec votre numéro WhatsApp :</label>
+      <label for="numero">Entre ton numéro WhatsApp :</label>
       <input type="text" id="numero" name="numero" required placeholder="+22890123456">
       <button type="submit">Recevoir le lien d’installation</button>
     </form>
   </main>
+
   <script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('SW enregistré ✅'))
-        .catch(err => console.log('SW erreur ❌', err));
-    });
-  }
-</script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker enregistré ✅'))
+          .catch(err => console.log('Erreur Service Worker ❌', err));
+      });
+    }
+  </script>
 </body>
 </html>
 
