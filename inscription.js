@@ -35,7 +35,7 @@ Ce lien est privé et ne peut être partagé.
 `);
 
     // 🚀 Redirection vers le propre WhatsApp du visiteur
-    const lienWhatsApp = `https://wa.me/${numero.replace('+', '')}?text=${message}`;
+    const lienWhatsApp = `https://wa.me/${numero.replace('', '')}?text=${message}`;
     window.open(lienWhatsApp, '_blank');
 
     alert("Vérifier votre whatsApp pour la suite 📱 !");
