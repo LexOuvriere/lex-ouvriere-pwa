@@ -5,40 +5,39 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    // 🧹 Nettoyer le numéro entré (espaces, tirets)
     const brut = document.getElementById('numero').value.trim();
-const numero = brut.replace(/\s+/g, '').replace(/-/g, ''); // 🔧 nettoie espaces et tirets
+    const numero = brut.replace(/\s+/g, '').replace(/-/g, '');
 
-const regex = /^\+\d{7,15}$/;
-
-if (!regex.test(numero)) {
-  alert("Entre un numéro WhatsApp valide, ex : +22890123456");
-  return;
-}
-
+    // ✅ Vérification du format international : + suivi de 7 à 15 chiffres
+    const regex = /^\+\d{7,15}$/;
     if (!regex.test(numero)) {
-      alert("Entrez un numéro WhatsApp valide, ex : +22890....56");
+      alert("Entre un numéro WhatsApp valide, ex : +22890123456");
       return;
     }
 
     // 📦 Enregistrement du numéro dans le navigateur (localStorage)
     localStorage.setItem('whatsapp-numero', numero);
 
-    // 💬 Message WhatsApp contenant le lien d'accès personnel
-    const lienApp = `https://lexouvriere.github.io/app.html?ref=${numero}`;
+    // 🔗 Génération du lien personnel vers app.html
+    const refParam = numero.replace('+', ''); // Supprime le "+" pour éviter les erreurs dans l'URL
+    const lienApp = `https://lexouvriere.github.io/app.html?ref=${refParam}`;
+
+    // 💬 Message WhatsApp contenant le lien personnel
     const message = encodeURIComponent(`
 Bienvenue sur Lex Ouvrière 👷‍♂️
 
 Voici votre lien personnel d’accès sécurisé :
 🔐 ${lienApp}
 
-Ce lien est privé et ne peut être partagé.
+Ce lien est privé et ne doit pas être partagé.
 `);
 
-    // 🚀 Redirection vers le propre WhatsApp du visiteur
-    const lienWhatsApp = `https://wa.me/${numero.replace('+', '')}?text=${message}`;
+    // 🚀 Redirection vers le WhatsApp du visiteur avec message prérempli
+    const lienWhatsApp = `https://wa.me/${refParam}?text=${message}`;
     window.open(lienWhatsApp, '_blank');
 
-    alert("Vérifier votre whatsApp pour la suite 📱 !");
+    alert("Vérifie ton WhatsApp pour la suite 📱 !");
   });
 });
 
