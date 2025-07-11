@@ -5,8 +5,15 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const numero = document.getElementById('numero').value.trim();
-    const regex = /^\+\d{7,15}$/;
+    const brut = document.getElementById('numero').value.trim();
+const numero = brut.replace(/\s+/g, '').replace(/-/g, ''); // 🔧 nettoie espaces et tirets
+
+const regex = /^\+\d{7,15}$/;
+
+if (!regex.test(numero)) {
+  alert("Entre un numéro WhatsApp valide, ex : +22890123456");
+  return;
+}
 
     if (!regex.test(numero)) {
       alert("Entrez un numéro WhatsApp valide, ex : +22890....56");
