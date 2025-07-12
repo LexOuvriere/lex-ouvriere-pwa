@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 🔗 Génération du lien personnel vers app.html sans le "+"
     const refParam = numero.replace('+', '');
-    const lienApp = `https://lexouvriere.github.io/app.html?ref=${refParam}`;
+    const lienApp = `https://lexouvriere.github.io/lex-ouvriere-pwa/app.html?ref=${refParam}`;
 
     // 💬 Message WhatsApp contenant le lien personnel
     const message = encodeURIComponent(`
