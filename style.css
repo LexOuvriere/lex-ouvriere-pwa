@@ -19,13 +19,12 @@ header {
   padding: 40px 0;
   background: transparent;
 }
-
 .logo-central img {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 800px; /* avant : 400px ou 500px */
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(100, 85, 45, 0.4)); /* halo cuivré */
+  filter: drop-shadow(0 0 14px rgba(100, 85, 45, 0.5)); /* halo cuivré légèrement intensifié */
 }
 
  }
