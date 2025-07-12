@@ -12,12 +12,23 @@ header {
   padding: 30px 10px;
   color: #fff;
 }
-
-.logo {
-  width: 150px;
-  max-width: 30%;
-  margin-bottom: 10px;
+.logo-central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  background: transparent;
 }
+
+.logo-central img {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(100, 85, 45, 0.4)); /* halo cuivré */
+}
+
+ }
 
 h1 {
   font-size: 2em;
