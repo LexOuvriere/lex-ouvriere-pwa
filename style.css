@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  border-radius: 40px;
+  border-radius: 16px;
   overflow: hidden; /* utile si tu as des effets ou images qui dépassent */
   border: 2px solid #c49a6c; /* optionnel : bordure laiton/cuivre */
   background-color: #5a4025;
